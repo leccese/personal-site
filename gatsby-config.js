@@ -11,5 +11,7 @@ module.exports = {
               allExtensions: true, // defaults to false
             }
         },
+        "gatsby-plugin-image",
+        "gatsby-plugin-sharp",
     ]
 }
