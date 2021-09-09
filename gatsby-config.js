@@ -13,5 +13,12 @@ module.exports = {
         },
         "gatsby-plugin-image",
         "gatsby-plugin-sharp",
+        {
+            resolve: "gatsby-source-filesystem",
+            options: {
+              name: `notes`,
+              path: `${__dirname}/notes`,
+            }
+          },
     ]
 }
