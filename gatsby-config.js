@@ -17,8 +17,9 @@ module.exports = {
             resolve: "gatsby-source-filesystem",
             options: {
               name: `notes`,
-              path: `${__dirname}/notes`,
+              path: `${__dirname}/notes/`,
             }
           },
+        "gatsby-plugin-mdx"
     ]
 }

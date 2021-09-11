@@ -16,7 +16,7 @@ export default function NavBar() {
                 />
             </Link>
             <nav>
-                <Link to="/notes">Notes</Link>
+                <Link to="/digital-garden">Digital Garden</Link>
                 <Link to="/about">About</Link>
             </nav>
         </div>
