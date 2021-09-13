@@ -20,6 +20,15 @@ module.exports = {
               path: `${__dirname}/notes/`,
             }
           },
-        "gatsby-plugin-mdx"
+        "gatsby-plugin-mdx",
+        {
+            resolve: `gatsby-plugin-manifest`,
+            options: {
+              name: 'isabel.tech',
+              short_name: 'isabel.tech',
+              start_url: '/',
+              icon: 'src/images/logo_v1.png',
+            },
+        },
     ]
 }
