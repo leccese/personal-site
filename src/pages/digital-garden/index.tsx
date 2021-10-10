@@ -7,7 +7,8 @@ export default function Notes( { data } ) {
     return (
         <>
         <NavBar/>
-        <h1>Notes</h1>
+        <h1>Digital Garden</h1>
+        <p>This is a collection of work in progress notes, which may become full-fledged essays or tutorials someday. if you're not familiar with the digital garden trend check out <a href="https://maggieappleton.com/garden-history" target="_blank">this post</a> and my own thoughts on digital gardening</p>
         <ul>
             {
                 data.allMdx.nodes.map(node => (
