@@ -1,13 +1,11 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby'
 
-import NavBar from '../../components/NavBar';
+import Layout from '../../components/Layout';
 
 export default function Notes( { data } ) {
     return (
-        <>
-        <NavBar/>
-        <h1>Digital Garden</h1>
+      <Layout>
         <p>This is a collection of work in progress notes, which may become full-fledged essays or tutorials someday. if you're not familiar with the digital garden trend check out <a href="https://maggieappleton.com/garden-history" target="_blank">this post</a> and my own thoughts on digital gardening</p>
         <ul>
             {
@@ -22,7 +20,7 @@ export default function Notes( { data } ) {
                 ))
             }
         </ul>
-        </>
+      </Layout>            
     )
 }
 

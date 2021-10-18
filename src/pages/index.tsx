@@ -1,18 +1,18 @@
 import React from 'react';
 import { Link } from 'gatsby';
 
-import NavBar from '../components/NavBar';
+import Layout from '../components/Layout';
+import { StaticImage }  from 'gatsby-plugin-image'
 
 import './index.css';
 
 export default function Index() {
     return (
-        <>
-        <NavBar/>
+        <Layout>
         <div className="landing-page-container">
             <div className="text">
                 <p>Hi, I'm Isabel Leccese and this is my personal website</p>
-                <p>In an effort to <a href="https://www.swyx.io/learn-in-public/" target="_blank">learn in public</a> (and because if I only published posted I considered <i>done</i> I would never public anything at all),
+                <p>In an effort to <a href="https://www.swyx.io/learn-in-public/" target="_blank">learn in public</a> (and because if I only published posted I considered <i>done</i> I would never publish anything at all),
                 I created a <Link to="/digital-garden">digital garden</Link> - a collection of work-in-progress notes. Mostly about software, but I may explore other topics</p>
                 <br/>
                 <p>I'm a full-stack software engineer and my weapons of choice are usually ReactJS + python or node.js</p>
@@ -24,9 +24,13 @@ export default function Index() {
                 <p>But you can contact me at isabel@isabel.tech</p>
             </div>
             <div className="photo">
-                <img src="https://m.media-amazon.com/images/I/51zLZbEVSTL._AC_SL1200_.jpg" alt="placeholder" width="300px"/>
+                <StaticImage 
+                    src='../images/profile_pic.jpg' 
+                    alt="icon"
+                    width={300}
+                />
             </div>
         </div>
-        </>
+        </Layout>
     )
 }

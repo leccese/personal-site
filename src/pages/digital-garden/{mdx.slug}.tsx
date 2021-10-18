@@ -2,19 +2,19 @@ import * as React from 'react';
 import { graphql } from 'gatsby'
 import NavBar from '../../components/NavBar';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
+import Layout from '../../components/Layout';
 
 
 const Note = ({data}) => {
 
   return (
-      <>
-      <NavBar />
+      <Layout>
       <h1>{data.mdx.frontmatter.title}</h1>
       <p>{data.mdx.frontmatter.date}</p>
         <MDXRenderer>
             {data.mdx.body}
         </MDXRenderer>
-      </>
+      </Layout>
   )
 };
 
