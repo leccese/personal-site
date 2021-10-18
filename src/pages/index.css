@@ -10,15 +10,27 @@
 }
 
 .text {
-    max-width: 600px
+    max-width: 600px;
+    width: 50vw;
 }
 
 .photo {
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 a {
     text-decoration: none;
     margin: 0px;
+}
+
+@media only screen and (max-width: 800px) {
+    .landing-page-container {
+        flex-direction: column;
+    }
+
+    .text {
+        width: 100%;
+    }
 }
