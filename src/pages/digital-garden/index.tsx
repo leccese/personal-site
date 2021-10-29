@@ -26,7 +26,7 @@ export default function Notes( { data } ) {
 
 export const query = graphql`
   query {
-    allMdx(sort: {fields: frontmatter___date, order: DESC}) {
+    allMdx(sort: {fields: frontmatter___date, order: DESC}, filter: { fileAbsolutePath: { regex: "//digital-garden//" } }) {
       nodes {
         frontmatter {
           date(formatString: "MMMM D, YYYY")

@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { graphql } from 'gatsby'
-import NavBar from '../../components/NavBar';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import Layout from '../../components/Layout';
 
