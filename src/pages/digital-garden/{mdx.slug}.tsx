@@ -9,7 +9,7 @@ const Note = ({data}) => {
   return (
       <Layout>
       <h1>{data.mdx.frontmatter.title}</h1>
-      <p>{data.mdx.frontmatter.date}</p>
+      <i>{data.mdx.frontmatter.subtitle}</i>
         <MDXRenderer>
             {data.mdx.body}
         </MDXRenderer>
@@ -22,6 +22,7 @@ export const query = graphql`
     mdx(id: {eq: $id}) {
       frontmatter {
         title
+        subtitle
         date(formatString: "MMMM D, YYYY")
       }
       body

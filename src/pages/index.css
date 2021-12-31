@@ -8,9 +8,9 @@
   /*
     2. Remove default margin
   */
-  /* * {
+  * {
     margin: 0;
-  } */
+  } 
   /*
     3. Allow percentage-based heights in the application
   */
@@ -103,4 +103,10 @@ a:hover, a:focus {
     .text {
         width: 100%;
     }
+}
+
+p, ul {
+  max-width: 800px;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
 }
