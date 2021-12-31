@@ -27,7 +27,7 @@ module.exports = {
               name: 'isabel.tech',
               short_name: 'isabel.tech',
               start_url: '/',
-              icon: 'src/images/logo_v2.png',
+              icon: 'src/images/favicon.png',
             },
         },
     ]

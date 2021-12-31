@@ -9,10 +9,9 @@ export default function NavBar() {
         <div className="nav-bar">
             <Link to="/">
                 <StaticImage 
-                    src='../images/logo_v2.png' 
-                    alt="icon"
-                    height={60}
-                    width={60}
+                    src='../../images/logo.png' 
+                    alt="isabel.tech"
+                    height={100}
                 />
             </Link>
             <nav>
