@@ -52,6 +52,25 @@
     isolation: isolate;
   }
 
+  body {
+    --bg: white;
+    --textNormal: #222;
+    --linkVisited: #7f3bde;
+    --linkUnvisited: #107ba2;
+  
+    background-color: var(--bg);
+    color: var(--textNormal);
+  }
+  
+  body.dark {
+    -webkit-font-smoothing: antialiased;
+    --linkVisited: #b682fb;
+    --linkUnvisited: #5dbcde;
+  
+    --bg: #222;
+    --textNormal: #ccc;
+  }
+
 * {
     font-family: "Georgia"
 }
@@ -84,11 +103,11 @@ a {
 }
 
 a:link {
-    color: #2b7c99;
+    color: var(--linkUnvisited);
 }
 
 a:visited {
-    color: #4e2d7d;
+    color: var(--linkVisited);
 }
 
 a:hover, a:focus {
