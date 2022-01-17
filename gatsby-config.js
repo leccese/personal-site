@@ -12,13 +12,29 @@ module.exports = {
             }
         },
         "gatsby-plugin-image",
+        "gatsby-transformer-sharp",
         "gatsby-plugin-sharp",
         {
           resolve: "gatsby-source-filesystem",
           options: {
             name: `content`,
             path: `${__dirname}/content/`,
-          }
+          },
+          
+      },
+      {
+        resolve: "gatsby-source-filesystem",
+        options: {
+          name: `digital-garden`,
+          path: `${__dirname}/digital-garden/`,
+        },
+      },
+      {
+        resolve: `gatsby-source-filesystem`,
+        options: {
+          name: "images",
+          path: `${__dirname}/src/images`,
+        },
       },
         "gatsby-plugin-mdx",
         {

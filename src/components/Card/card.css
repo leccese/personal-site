@@ -1,7 +1,59 @@
-.card-container {
-    border:  1px solid hsl(221, 29%, 80%);;
+.card {
+    background-color: var(--cardBackground);
+    border-radius: 10px;
     margin: 16px;
     padding: 8px;
-    border-radius: 10px;
-    max-width: 700px;
+    max-width: 600px;
+    padding: 16px;
+    display: flex;
+    filter: var(--dropShadowFilter);
 }
+
+.card-image {
+    min-width: 200px;
+    min-height: 200px;
+    border-radius: 10px;
+}
+
+.card-text {
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+}
+
+@media only screen and (max-width: 600px) {
+    .card {
+        flex-direction: column;
+    }
+
+    /* 
+    keeping image square while filling full width of card
+    https://carlanderson.xyz/how-to-keep-your-flexbox-square/
+    */
+    .card-image {
+        flex: 1 0 auto;
+        height: auto;
+        /* overriding min-wdith and min-height set before so image
+        can fit mobile screens */
+        min-width: auto;
+        min-height: auto;
+    }
+
+    .card-image::before {
+        content: '';
+        display: block;
+        padding-top: 100%;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .card {
+        margin: 16px 0;
+    }
+
+    .card-text {
+        padding: 4px;
+    }
+}
+
+

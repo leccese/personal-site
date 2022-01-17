@@ -2,17 +2,29 @@ import * as React from 'react';
 import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import Layout from '../../components/Layout/Layout';
+import Img from "gatsby-image"
+import './slug.css';
 
 
 const Note = ({data}) => {
+  const img = data.mdx.frontmatter.image?.childImageSharp.fluid;
 
   return (
+
       <Layout>
-      <h1>{data.mdx.frontmatter.title}</h1>
-      <i>{data.mdx.frontmatter.subtitle}</i>
-        <MDXRenderer>
-            {data.mdx.body}
-        </MDXRenderer>
+        <div className={"post-content"}>
+          <h1>{data.mdx.frontmatter.title}</h1>
+          <i>{data.mdx.frontmatter.subtitle}</i>
+          {img && 
+            <Img 
+                fluid={img}
+                className={"title-image"}
+            />}
+            <MDXRenderer className={"post-body"}>
+                {data.mdx.body}
+            </MDXRenderer>
+        </div>
+      
       </Layout>
   )
 };
@@ -23,7 +35,13 @@ export const query = graphql`
       frontmatter {
         title
         subtitle
-        date(formatString: "MMMM D, YYYY")
+        image {
+          childImageSharp {
+            fluid(maxWidth: 600) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
       body
     }

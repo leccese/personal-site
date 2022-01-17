@@ -57,6 +57,8 @@
     --textNormal: #222;
     --linkVisited: #7f3bde;
     --linkUnvisited: #107ba2;
+    --cardBackground: white;
+    --dropShadowFilter: drop-shadow(1px 1px 2px #b4c6bf);
   
     background-color: var(--bg);
     color: var(--textNormal);
@@ -64,16 +66,13 @@
   
   body.dark {
     -webkit-font-smoothing: antialiased;
-    --linkVisited: #b682fb;
-    --linkUnvisited: #5dbcde;
-  
     --bg: #222;
     --textNormal: #ccc;
+    --linkVisited: #b682fb;
+    --linkUnvisited: #5dbcde;
+    --cardBackground: #333;
+    --dropShadowFilter: none;
   }
-
-* {
-    font-family: "Georgia"
-}
 
 h1, h2, h3, nav > * {
     font-family: "roboto", sans-serif
@@ -128,4 +127,5 @@ p, ul, ol, li {
   max-width: 800px;
   margin-block-start: 1em;
   margin-block-end: 1em;
+  font-family: "Georgia"
 }

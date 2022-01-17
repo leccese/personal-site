@@ -24,9 +24,15 @@ export const query = graphql`
     allMdx(sort: {fields: frontmatter___date, order: DESC}, filter: { fileAbsolutePath: { regex: "//digital-garden//" } }) {
       nodes {
         frontmatter {
-          date(formatString: "MMMM D, YYYY")
           title
           subtitle
+          image {
+            childImageSharp {
+              fluid(maxWidth: 500, maxHeight: 500) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
         }
         id
         slug
