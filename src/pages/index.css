@@ -1,131 +1,154 @@
-
 /* some base css
   1. Use a more-intuitive box-sizing model.
 */
-*, *::before, *::after {
-    box-sizing: border-box;
-  }
-  /*
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+/*
     2. Remove default margin
   */
-  * {
-    margin: 0;
-  } 
-  /*
+* {
+  margin: 0;
+}
+/*
     3. Allow percentage-based heights in the application
   */
-  html, body {
-    height: 100%;
-  }
-  /*
+html,
+body {
+  height: 100%;
+}
+/*
     Typographic tweaks!
     4. Add accessible line-height
     5. Improve text rendering
   */
-  body {
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
-  }
-  /*
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+/*
     6. Improve media defaults
   */
-  img, picture, video, canvas, svg {
-    display: block;
-    max-width: 100%;
-  }
-  /*
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+/*
     7. Remove built-in form typography styles
   */
-  input, button, textarea, select {
-    font: inherit;
-  }
-  /*
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+/*
     8. Avoid text overflows
   */
-  p, h1, h2, h3, h4, h5, h6 {
-    overflow-wrap: break-word;
-  }
-  /*
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+/*
     9. Create a root stacking context
   */
-  #root, #__next {
-    isolation: isolate;
-  }
+#root,
+#__next {
+  isolation: isolate;
+}
 
-  body {
-    --bg: white;
-    --textNormal: #222;
-    --linkVisited: #7f3bde;
-    --linkUnvisited: #107ba2;
-    --cardBackground: white;
-    --dropShadowFilter: drop-shadow(1px 1px 2px #b4c6bf);
-  
-    background-color: var(--bg);
-    color: var(--textNormal);
-  }
-  
-  body.dark {
-    -webkit-font-smoothing: antialiased;
-    --bg: #222;
-    --textNormal: #ccc;
-    --linkVisited: #b682fb;
-    --linkUnvisited: #5dbcde;
-    --cardBackground: #333;
-    --dropShadowFilter: none;
-  }
+body {
+  --bg: white;
+  --textNormal: #222;
+  --linkVisited: #7f3bde;
+  --linkUnvisited: #107ba2;
+  --cardBackground: white;
+  --dropShadowFilter: drop-shadow(1px 1px 2px #b4c6bf);
 
-h1, h2, h3, nav > * {
-    font-family: "roboto", sans-serif
+  background-color: var(--bg);
+  color: var(--textNormal);
+}
+
+body.dark {
+  -webkit-font-smoothing: antialiased;
+  --bg: #222;
+  --textNormal: #ccc;
+  --linkVisited: #b682fb;
+  --linkUnvisited: #5dbcde;
+  --cardBackground: #333;
+  --dropShadowFilter: none;
+}
+
+h1,
+h2,
+h3,
+nav > * {
+  font-family: "roboto", sans-serif;
 }
 
 .landing-page-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
 }
 
 .text {
-    max-width: 600px;
-    width: 50vw;
+  max-width: 600px;
+  width: 50vw;
 }
 
 .photo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 a {
-    text-decoration: none;
-    margin: 0px;
+  text-decoration: none;
+  margin: 0px;
 }
 
 a:link {
-    color: var(--linkUnvisited);
+  color: var(--linkUnvisited);
 }
 
 a:visited {
-    color: var(--linkVisited);
+  color: var(--linkVisited);
 }
 
-a:hover, a:focus {
-    text-decoration: underline;
+a:hover,
+a:focus {
+  text-decoration: underline;
 }
 
 @media only screen and (max-width: 800px) {
-    .landing-page-container {
-        flex-direction: column;
-    }
+  .landing-page-container {
+    flex-direction: column;
+  }
 
-    .text {
-        width: 100%;
-    }
+  .text {
+    width: 100%;
+  }
 }
 
-p, ul, ol, li {
+p,
+ul,
+ol,
+li {
   max-width: 800px;
   margin-block-start: 1em;
   margin-block-end: 1em;
-  font-family: "Georgia"
+  font-family: "Georgia";
 }

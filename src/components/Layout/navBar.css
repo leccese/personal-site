@@ -1,18 +1,17 @@
 .nav-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 nav {
-    flex-grow: 1;
-    display: flex;
-    justify-content: flex-end;
-    gap: 16px;
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
 }
 
 a {
-    margin: 16px;
+  margin: 16px;
 }
-

@@ -1,8 +1,8 @@
-import React from "react"
+import React from "react";
 
 import NavBar from "./NavBar";
 
-import './layout.css';
+import "./layout.css";
 
 export default function Layout({ children }) {
   return (
@@ -10,5 +10,5 @@ export default function Layout({ children }) {
       <NavBar />
       {children}
     </div>
-  )
+  );
 }
