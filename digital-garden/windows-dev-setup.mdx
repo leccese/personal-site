@@ -1,0 +1,44 @@
+---
+title: "Windows Development Environment Setup with WSL2"
+subtitle: "Programming on windows doesn't suck anymore"
+image: ""
+date: "2022-01-22"
+---
+
+For anyone that has even a passing experience programming in a unix-like environement, trying to program on a windows machine has previously been a painful process.
+
+But Microsoft has put an end to the dark ages with the release of [Windows Subsystem for Linux 2 (WSL2)](https://docs.microsoft.com/en-us/windows/wsl/about).
+
+## WSL2
+
+WSL2 is linux *inside* windows. It provides the power which was previously only available by dual booting linux, but with a simple and seamless experience. Even if you know little to nothing about linux, you can easily install the default ubuntu distribution with [one command](https://docs.microsoft.com/en-us/windows/wsl/install). 
+
+I think WSL2 is a big win for any software engineers (and aspiring software engineers, because it's so easy to setup!) who aren't sold on the apple ecosystem. 
+
+## My environment setup
+
+The big picture is:
+
+1. windows installations
+    - I do almost all of my development on linux but there are still some things to install on the windows side like:
+        - a decent terminal like hyper
+        - choco
+        - vscode
+        - browsers
+        - node
+        - a devent basic text editor like sublime
+2. install WSL2
+    - it's as easy as `wsl --install` then setup your linux user
+    - see [the docs](https://docs.microsoft.com/en-us/windows/wsl/install) for details
+3. linux installations
+
+TODO: details and install scripts (so next time I have to set things up from scratch, it will be easy)
+
+Some other posts I referenced for my setup:
+- [How I Setup a Windows Dev Environment - Aaron Powell](https://www.aaron-powell.com/posts/2020-03-25-how-i-setup-a-windows-dev-environment/) - includes scripts
+- [Web Development Setup Guide for Windows with Linux (WSL) - fireship.io](https://fireship.io/lessons/windows-10-for-web-dev/)
+- [Making web dev on Windows great with WSL2 - Owen Williams](https://char.gd/blog/2019/windows-web-dev-with-wsl2)
+
+
+also TODO: explanation of how the filesystem is setup with WSL
+
