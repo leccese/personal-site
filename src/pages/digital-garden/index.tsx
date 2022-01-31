@@ -7,6 +7,7 @@ import Card from "../../components/Card/Card";
 export default function Notes({ data }) {
   return (
     <Layout>
+      <h1>Digital Garden</h1>
       <p>
         This is a collection of work in progress notes, which may become
         full-fledged essays or tutorials someday
@@ -16,8 +17,7 @@ export default function Notes({ data }) {
         if you're not familiar with the digital garden trend check out{" "}
         <a href="https://maggieappleton.com/garden-history" target="_blank">
           this post
-        </a>{" "}
-        and my own thoughts on digital gardening
+        </a>
       </p>
       {data.allMdx.nodes.map((node) => (
         <Card node={node} />
