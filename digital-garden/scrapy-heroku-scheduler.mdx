@@ -1,0 +1,39 @@
+---
+title: "Hosting Scrapy Projects the Free and Easy Way Using Heroku Scheduler"
+subtitle: "When to use Heroku scheduler for scraper deployment and how to set it up"
+date: "2022-01-31"
+image: ''
+---
+Figuring out how to deploy projects is probably my least favorite part of building side projects.  I'm usually looking for an option that falls into the intersection of being:
+ * minimal time / effort for me to understand the platform and get things setup
+ * "set it and forget it" (i.e. I don't want to worry about things randomly breaking)
+ * free or cheap
+
+Thankfully, I've been pleasantly surprised to see this category of "easy" cloud hosting solutions grow dramatically
+
+I recently came across  Jerry Ng's ["How to Deploy Python Scrapy Spiders for Free on Cloud"](https://jerrynsh.com/how-to-deploy-python-scrapy-spiders-for-free-on-cloud/) which introduced me to using Heroku scheduler. (This post is heavily based on Jerry's post, thank you Jerry!)
+
+# When to use Heroku scheduler
+
+I give a more detailed comparison of Heroku scheduler vs other free deployment options in this post
+
+Heroku scheduler is very simple and also have a generous free tier so it is my default choice for side projects, keeping the following considerations in mind:
+
+### Reliability is probably good enough for side projects but is not "production grade"
+
+- "Scheduler job execution is expected but not guaranteed. Scheduler is known to occasionally (but rarely) miss the execution of scheduled jobs. If scheduled jobs are a critical component of your application, it is recommended to run a [custom clock process](https://devcenter.heroku.com/articles/scheduled-jobs-custom-clock-processes) instead for more reliability, control, and visibility." (from [heroku](https://devcenter.heroku.com/articles/scheduler))
+- I wasn't able to find any more details or stats on the reliability (analogous to an uptime percentage)
+
+### Free Tier contains 1000 dyno hours per month
+
+- the scheduler runs using one-off dynos out of your account's free dyno hour pool. Each account that is verified with a credit card will have a total of 1000 free dyno hours per month. You don't need to worry about your credit card getting charged if you accidentally use up all your free dynos hours for a given month - as long as all your apps are set to use free dynos they will be forced to sleep for the rest of the month and will not accure any charges. see details on [heroku](https://devcenter.heroku.com/articles/free-dyno-hours#free-dyno-hour-pool)
+
+# How to Setup Heroku Scheduler
+
+Follow the directions from [Jerry's post](https://jerrynsh.com/how-to-deploy-python-scrapy-spiders-for-free-on-cloud/)
+
+he also includes details on how to run all spiders in a single command and how to configure your spider to run at a custom interval (scheduler only provides interval options for every 10 min/hour/day)
+
+To make sure your spider ran ok, check the logs produced by the last run of your spider: `heroku logs --tail --ps scheduler`
+
+
