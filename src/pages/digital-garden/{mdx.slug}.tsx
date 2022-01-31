@@ -12,7 +12,7 @@ const Note = ({ data }) => {
     <Layout>
       <div className={"post-content"}>
         <h1>{data.mdx.frontmatter.title}</h1>
-        <i>{data.mdx.frontmatter.subtitle}</i>
+        <h3><i>{data.mdx.frontmatter.subtitle}</i></h3>
         {img && <Img fluid={img} className={"title-image"} />}
         <MDXRenderer className={"post-body"}>{data.mdx.body}</MDXRenderer>
       </div>
