@@ -1,0 +1,93 @@
+---
+title: "Clojure Fundamentals"
+subtitle: "Integrating what I've learned so far"
+image: ""
+date: "2022-02-15"
+---
+
+In Clojure, everything is an expression (a.k.a form) that evaluates to a value. 
+
+Expressions which exclusively perform side effects (like printing) return `nil`.
+
+How Clojure evaluates each expression depends on the kind of expression.
+
+# Kinds of Expressions
+
+## Literals
+
+Literal representations of primitives (i.e. integers, strings, lists) are all valid Clojure expressions. 
+
+Most literal expressions evaluate to themselves, except symbols and lists. Symbols are used to refer to something else and when evaluated, return what they refer to. Lists are evaluated as calls (see Operations below) 
+
+Since literals don't *do anything*, you'll usually find them in operations.
+
+## Operations
+
+All operations (a.k.a calls) have the following form:
+
+**(operator operand1 operand2 ... operandn)**
+
+Depending on the operator, Clojure will treat the operation as a:
+
+1. Special form
+2. Macro call
+3. Function call
+
+When Clojure comes across an operation, first it checks if the operator is a name of a special form or a macro, otherwise it treats the operation like a function call.
+
+### Function calls
+
+Function calls are the default case and they follow standard Clojure evaluation. Clojure will recursively evaluate each operand before passing them to the function.
+
+Special forms and macros are used for functionality that can't be implemented with functions because they require evaluations rules which differ from standard Clojure evaluation.
+
+### Special forms
+
+Special forms are primitives built-in to Clojure.
+
+For example, it would be impossible to implement a if/else flow structure with a function, because both branches would be evaluated before being passed to the function.
+
+That's why `if` is implemented as a special form.
+
+### Macro calls
+
+Macros are special functions that can manipulate expressions before they are evaluated. 
+
+When a macro function is called, it is passed the unevaluated operand expressions. The macro manipulates those expressions, returning a new expression. That new expression is in evaluated in its place.
+
+This essentially allows the syntax of the language to be expanded.
+
+Macros can be user defined, but many primitives in Clojure you might expect to be special forms are actually macros.
+
+For example, consider the special form `if`. There is another special form `do` which allows a block of expressions to be evaluated. Since only the return value of the last expression is returned from do, this is usually used to allow for side effects.
+
+We might use `if` with `do` like:
+```
+(if success
+    (do (println "success!")
+    true
+    )
+)
+```
+Clojure has a macro `when` which combines `if` and `do`. 
+
+If I tried to write `when` as a function like
+```
+(defn my-when [test & expressions] 
+  (if test 
+    (do expressions)))
+```
+it wouldn't work. Since `my-when` is a function and `expressions` is an operand of that function, each expression in `expressions` would get evaluated before it is passed to `my-when`.
+
+Therefore, `when` has to be defined as a macro.
+
+
+
+
+References:
+- [Clojure for the Brave and True](https://www.braveclojure.com/clojure-for-the-brave-and-true/)
+- [clojure.org Getting Started Guide](https://clojure.org/guides/learn/clojure)
+- [Evaluation](https://clojure.org/reference/evaluation)
+
+
+
