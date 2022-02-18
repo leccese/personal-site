@@ -1,6 +1,6 @@
 ---
-title: "Clojure Fundamentals"
-subtitle: "Integrating what I've learned so far"
+title: "Clojure Evaluation"
+subtitle: "Just the basics"
 image: ""
 date: "2022-02-15"
 ---
@@ -17,7 +17,25 @@ How Clojure evaluates each expression depends on the kind of expression.
 
 Literal representations of primitives (i.e. integers, strings, lists) are all valid Clojure expressions. 
 
-Most literal expressions evaluate to themselves, except symbols and lists. Symbols are used to refer to something else and when evaluated, return what they refer to. Lists are evaluated as calls (see Operations below) 
+Most literal expressions evaluate to themselves, except symbols and lists. 
+
+Symbols are used to refer to something else and when evaluated, return what they refer to. Lists are evaluated as calls (see Operations below). 
+
+You can suspend evaluation of a symbol or list by using a single quote:
+
+```
+user=> (def greeting 'hi')
+#'user/greeting
+user=> greeting
+hi'
+user=> 'greeting
+greeting
+user=> (1 2 3) ;; since this is unquoted, Clojure will try to call 1 as a function
+Execution error (ClassCastException) at user/eval3 (REPL:1).
+class java.lang.Long cannot be cast to class clojure.lang.IFn (java.lang.Long is in module java.base of loader 'bootstrap'; clojure.lang.IFn is in unnamed module of loader 'app')
+user=> '(1 2 3)
+(1 2 3)
+```
 
 Since literals don't *do anything*, you'll usually find them in operations.
 
@@ -46,6 +64,14 @@ Special forms and macros are used for functionality that can't be implemented wi
 Special forms are primitives built-in to Clojure.
 
 For example, it would be impossible to implement a if/else flow structure with a function, because both branches would be evaluated before being passed to the function.
+
+```
+;; won't work
+(defn if-function
+    [test if-branch then-branch] ;; <-- all of these would get evaluated before being passed to if-function
+    ...
+)
+```
 
 That's why `if` is implemented as a special form.
 
