@@ -97,15 +97,31 @@ We might use `if` with `do` like:
 ```
 Clojure has a macro `when` which combines `if` and `do`. 
 
-If I tried to write `when` as a function like
+If I tried to write `when` as a function
 ```clojure
-(defn my-when [test & expressions] 
-  (if test 
-    (do expressions)))
+user=> (defn my-when-fn [test & expressions] (if test (do expressions)))
+#'user/my-when-fn
+user=> (my-when-fn true (println "yes!") "success")
+yes!
+(nil "success")
+user=> (my-when-fn false (println "yes!") "success")
+yes!
+nil
 ```
-it wouldn't work. Since `my-when` is a function and `expressions` is an operand of that function, each expression in `expressions` would get evaluated before it is passed to `my-when`.
+it wouldn't work for a couple reasons:
 
-Therefore, `when` has to be defined as a macro.
+1. The expression `println "yes!"` gets evaluated regardless of whether `test` is `true` or `false`. This is because `my-when-fn` is a function and `expressions` is an operand of that function, each expression in `expressions` will get evaluated before it is passed to `my-when-fn`
+
+2. In the `true` case, instead of just returning `success`, it returns `(nil "success")`. This is because expressions is a list, so instead of `(println success)` and `"success"` because passed to `do` as separate arguments, do is being passed one argument `((println success) "success")`. Since `do` is a special form, not a function which we can use `apply` on, there is no way to pass the contents of `expressions` to `do` without using a macro
+
+Therefore, `when` is implemented as a macro:
+```clojure
+(defmacro when
+  "Evaluates test. If logical true, evaluates body in an implicit do."
+  {:added "1.0"}
+  [test & body]
+  (list 'if test (cons 'do body)))
+```
 
 
 
