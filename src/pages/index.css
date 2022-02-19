@@ -75,6 +75,8 @@ body {
   --linkUnvisited: #107ba2;
   --cardBackground: white;
   --dropShadowFilter: drop-shadow(1px 1px 2px #b4c6bf);
+  --darkCodeBackground:  rgb(17, 23, 26);
+  --inlineCodeBackground: rgb(228, 228, 228);
 
   background-color: var(--bg);
   color: var(--textNormal);
@@ -88,6 +90,7 @@ body.dark {
   --linkUnvisited: #5dbcde;
   --cardBackground: #333;
   --dropShadowFilter: none;
+  --inlineCodeBackground: var(--darkCodeBackground);
 }
 
 h1,
@@ -159,5 +162,10 @@ deckgo-highlight-code {
   /* hides the toolbar which makes the code block look like a mac terminal window */
   --deckgo-highlight-code-carbon-toolbar-display: none;
   /* makes the background of the code block a little different from the dark mode background color */
-  --deckgo-highlight-code-carbon-background: rgb(17, 23, 26);
+  --deckgo-highlight-code-carbon-background: var(--darkCodeBackground);
+}
+
+code {
+  background-color: var(--inlineCodeBackground);
+  padding: .25em;
 }
