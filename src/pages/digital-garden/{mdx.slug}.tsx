@@ -4,6 +4,8 @@ import { MDXRenderer } from "gatsby-plugin-mdx";
 import Layout from "../../components/Layout/Layout";
 import Img from "gatsby-image";
 import "./slug.css";
+import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader";
+deckDeckGoHighlightElement();
 
 const Note = ({ data }) => {
   const img = data.mdx.frontmatter.image?.childImageSharp.fluid;

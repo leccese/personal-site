@@ -23,7 +23,7 @@ Symbols are used to refer to something else and when evaluated, return what they
 
 You can suspend evaluation of a symbol or list by using a single quote:
 
-```
+```clojure
 user=> (def greeting 'hi')
 #'user/greeting
 user=> greeting
@@ -65,7 +65,7 @@ Special forms are primitives built-in to Clojure.
 
 For example, it would be impossible to implement a if/else flow structure with a function, because both branches would be evaluated before being passed to the function.
 
-```
+```clojure
 ;; won't work
 (defn if-function
     [test if-branch then-branch] ;; <-- all of these would get evaluated before being passed to if-function
@@ -88,7 +88,7 @@ Macros can be user defined, but many primitives in Clojure you might expect to b
 For example, consider the special form `if`. There is another special form `do` which allows a block of expressions to be evaluated. Since only the return value of the last expression is returned from do, this is usually used to allow for side effects.
 
 We might use `if` with `do` like:
-```
+```clojure
 (if success
     (do (println "success!")
     true
@@ -98,7 +98,7 @@ We might use `if` with `do` like:
 Clojure has a macro `when` which combines `if` and `do`. 
 
 If I tried to write `when` as a function like
-```
+```clojure
 (defn my-when [test & expressions] 
   (if test 
     (do expressions)))

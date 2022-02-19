@@ -152,3 +152,11 @@ li {
   margin-block-end: 1em;
   font-family: "Georgia";
 }
+
+
+deckgo-highlight-code {
+  /* hides the toolbar which makes the code block look like a mac terminal window */
+  --deckgo-highlight-code-carbon-toolbar-display: none;
+  /* makes the background of the code block a little different from the dark mode background color */
+  --deckgo-highlight-code-carbon-background: rgb(17, 23, 26);
+}
