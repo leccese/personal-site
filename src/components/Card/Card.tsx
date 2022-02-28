@@ -1,14 +1,14 @@
 import React from "react";
-import { Link, graphql } from "gatsby";
+import { Link } from "gatsby";
 
 import "./card.css";
-import Img from "gatsby-image";
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 export default function Card({ node }) {
-  const img = node.frontmatter.image?.childImageSharp.fluid;
+  const img = getImage(node.frontmatter.image)
   return (
     <div key={node.id} className="card">
-      {img && <Img fixed={img} className={"card-image"} />}
+      {img && <GatsbyImage image={img} className={"card-image"} alt={"card image"}/>}
       <div className="card-text">
         <h2>
           <Link to={`/digital-garden/${node.slug}`}>

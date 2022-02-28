@@ -38,9 +38,10 @@ export const query = graphql`
           subtitle
           image {
             childImageSharp {
-              fluid(maxWidth: 500, maxHeight: 500) {
-                ...GatsbyImageSharpFluid
-              }
+              gatsbyImageData(
+                width: 500
+                placeholder: BLURRED
+              )
             }
           }
         }

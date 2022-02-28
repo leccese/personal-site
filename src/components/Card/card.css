@@ -26,24 +26,6 @@
     flex-direction: column;
   }
 
-  /* 
-    keeping image square while filling full width of card
-    https://carlanderson.xyz/how-to-keep-your-flexbox-square/
-    */
-  .card-image {
-    flex: 1 0 auto;
-    height: auto;
-    /* overriding min-wdith and min-height set before so image
-        can fit mobile screens */
-    min-width: auto;
-    min-height: auto;
-  }
-
-  .card-image::before {
-    content: "";
-    display: block;
-    padding-top: 100%;
-  }
 }
 
 @media only screen and (max-width: 400px) {

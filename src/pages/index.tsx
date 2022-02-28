@@ -17,7 +17,7 @@ export default function Index({ data }) {
         </div>
 
         <div className="photo">
-          <StaticImage src="../images/profile_pic.jpg" alt="icon" width={300} />
+          <StaticImage src="../images/profile_pic.jpg" alt="profile pic" width={300} placeholder="blurred"/>
         </div>
       </div>
     </Layout>
