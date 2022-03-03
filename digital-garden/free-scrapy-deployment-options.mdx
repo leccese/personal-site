@@ -1,0 +1,25 @@
+---
+title: "A Comparision of Free Options for Deploying a Scrapy Project"
+subtitle: ""
+date: "2022-03-03"
+image:
+---
+
+need a way to 
+- run
+- schedule
+- monitor 
+
+your spiders
+
+zyte is the "all batteries included" service, which handles of all above
+
+scrapyd is an open source application to run Scrapy spiders. it provides an API to schedule and monitor spiders, but to perform those tasks from a dahboard, you'll need a separate app. the most popular open source dashboard is ScrapydWeb, but I recommend using a new service ScrapeOps. It has a more robust feature set, nicer UI, and is easier to setup because you don't have to host it yourself
+
+an alternative way to run and schedule Scrapy spiders is heroku scheduler. this option is the absolute simplest way, so I'd recommend it to anyone who wants to get something running quickly or is new to this kind of thing. heroku scheduler does not provide any monitoring (the best you can do is look at the tail logs) so I recommend adding ScrapeOps to your spider for monitoring. 
+
+| | Setup | Free Tier | Cost Past Free Tier | Reliablility |
+| --- | --- | --- | --- | --- |
+Zyte | easy | x | x | production ready |
+ScrapyD on Heroku + Scrapeops | medium | x | x | production ready |
+Heroku Scheduler + Scrapeops | easy | x | x | not production ready |
