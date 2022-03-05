@@ -80,6 +80,7 @@ body {
   --tableHeader: #b5ddec;
   --tableRowEven: #ebf7fc;
   --tableRowOdd: #daedf4;
+  --headerFont: "roboto", sans-serif;
 
   background-color: var(--bg);
   color: var(--textNormal);
@@ -100,12 +101,13 @@ body.dark {
   
 }
 
+
 h1,
 h2,
 h3,
 th,
 nav > * {
-  font-family: "roboto", sans-serif;
+  font-family: var(--headerFont);
 }
 
 .landing-page-container {
@@ -180,7 +182,12 @@ code {
 
 .table-scroll-wrapper {
   overflow-x: scroll;
-  
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none; /* for Firefox */
+}
+
+.table-scroll-wrapper::-webkit-scrollbar {
+  display: none; /* for Chrome, Safari, and Opera */
 }
 
 table {
@@ -191,16 +198,23 @@ table {
 
 
 tr {
-  padding: 8px;
+  padding: 1rem;
 }
 
-td {
-  padding: 8px;
+td, th {
+  padding: 1rem;
 }
 
 th {
   background-color: var(--tableHeader);
   text-align: left;
+} 
+
+td:nth-child(1) {
+  font-weight: 600;
+  font-family: var(--headerFont);
+  border-left: 16px solid var(--tableHeader);
+  border-right: 8px solid var(--tableHeader);
 }
 
 tr:nth-child(even){
