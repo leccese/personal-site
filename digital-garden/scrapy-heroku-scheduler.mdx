@@ -1,39 +1,68 @@
 ---
-title: "Hosting Scrapy Projects the Free and Easy Way Using Heroku Scheduler"
+title: "Heroku Scheduler: The Easiest Way to Host a Scrapy Poject for Free"
 subtitle: "When to use Heroku scheduler for scraper deployment and how to set it up"
 date: "2022-01-31"
 image:
 ---
-Figuring out how to deploy projects is probably my least favorite part of building side projects.  I'm usually looking for an option that falls into the intersection of being:
- * minimal time / effort for me to understand the platform and get things setup
- * "set it and forget it" (i.e. I don't want to worry about things randomly breaking)
- * free or cheap
+import { Link } from "gatsby";
 
-Thankfully, I've been pleasantly surprised to see this category of "easy" cloud hosting solutions grow dramatically
+I recently came across Jerry Ng's ["How to Deploy Python Scrapy Spiders for Free on Cloud"](https://jerrynsh.com/how-to-deploy-python-scrapy-spiders-for-free-on-cloud/) which introduced me to using Heroku Scheduler. (This post is heavily based on Jerry's post, thank you Jerry!)
 
-I recently came across  Jerry Ng's ["How to Deploy Python Scrapy Spiders for Free on Cloud"](https://jerrynsh.com/how-to-deploy-python-scrapy-spiders-for-free-on-cloud/) which introduced me to using Heroku scheduler. (This post is heavily based on Jerry's post, thank you Jerry!)
+---
 
-# When to use Heroku scheduler
+[Heroku Scheduler](https://devcenter.heroku.com/articles/scheduler) is the simplest way to deploy a Scrapy project for free. (Admittedly, the hosted cloud service [Zyte Scrapy Cloud](https://www.zyte.com/scrapy-cloud/) may be a tad simpler, but their free tier is very limited, so practically speaking it's not a free option.)
 
-I give a more detailed comparison of Heroku scheduler vs other free deployment options in this post
+To deploy your spider using Heroku Scheduler, all you need to do is:
+- add your Scrapy project as a Heroku App
+- add the Heroku Scheduler add-on
+- use the Heroku Scheduler UI to configure when Heroku will run your spider
 
-Heroku scheduler is very simple and also have a generous free tier so it is my default choice for side projects, keeping the following considerations in mind:
+If you haven't used Heroku before, it is very beginner friendly!
+
+Heroku Scheduler does not provide a good user interface for monitoring your spiders, so I recommend using [ScrapeOps](https://scrapeops.io/). They provide a fully-featured dashboard for monitoring your spiders, with a free unlimited community plan.
+
+# When to use Heroku Scheduler + ScrapeOps
+
+Heroku Scheduler is best for getting something running quickly and will work for almost all "side project" type use cases.
+
+Using a Scrapyd server on Heroku + ScrapeOps is a slightly more robust solution but it requires a couple more steps in setup, so I'd recommend beginners start with Heroku Scheduler. You can easily switch to using Scrapyd later if you need to.
+
+I give a more detailed comparison of Heroku Scheduler vs other free deployment options in my post <Link to="/digital-garden/free-scrapy-deployment-options">A Comparision of Free Options for Deploying Scrapy Projects</Link>
+
+## Limitations
+
+If you want to use Heroku Scheduler, there are a couple limitations to be aware of:
 
 ### Reliability is probably good enough for side projects but is not "production grade"
 
 - "Scheduler job execution is expected but not guaranteed. Scheduler is known to occasionally (but rarely) miss the execution of scheduled jobs. If scheduled jobs are a critical component of your application, it is recommended to run a [custom clock process](https://devcenter.heroku.com/articles/scheduled-jobs-custom-clock-processes) instead for more reliability, control, and visibility." (from [heroku](https://devcenter.heroku.com/articles/scheduler))
-- I wasn't able to find any more details or stats on the reliability (analogous to an uptime percentage)
+- I wasn't able to find any more details or stats on the reliability (analogous to an uptime percentage) but I've personally never experienced a skipped job
 
 ### Free Tier contains 1000 dyno hours per month
 
-- the scheduler runs using one-off dynos out of your account's free dyno hour pool. Each account that is verified with a credit card will have a total of 1000 free dyno hours per month. You don't need to worry about your credit card getting charged if you accidentally use up all your free dynos hours for a given month - as long as all your apps are set to use free dynos they will be forced to sleep for the rest of the month and will not accure any charges. see details on [heroku](https://devcenter.heroku.com/articles/free-dyno-hours#free-dyno-hour-pool)
+- Heroku Scheduler runs using one-off dynos out of your account's free dyno hour pool. Each account that is verified with a credit card will have a total of 1000 free dyno hours per month. You don't need to worry about your credit card getting charged if you accidentally use up all your free dynos hours for a given month - as long as all your apps are set to use free dynos they will be forced to sleep for the rest of the month and will not accure any charges. see details on [heroku](https://devcenter.heroku.com/articles/free-dyno-hours#free-dyno-hour-pool)
+
+### UI for scheduling spiders is not the best if you need to use it frequently
+
+- The Heroku Scheduler UI is fine, but I wouldn't want to use it frequently. 
+- ScrapeOps provides a much nicer UI for scheduling spiders, so if you need to adjust scheduling frequently, I would consider running your spiders on a Scrapyd server you can schedule your spider through ScrapeOps. (ScrapeOps can provide monitoring and alerting for any spider running - such as one running on Heroku Scheduler - but you can only use its scheduling dashboard for Scrapyd servers)
+
 
 # How to Setup Heroku Scheduler
 
-Follow the directions from [Jerry's post](https://jerrynsh.com/how-to-deploy-python-scrapy-spiders-for-free-on-cloud/)
+Follow the directions from [Jerry's post](https://jerrynsh.com/how-to-deploy-python-scrapy-spiders-for-free-on-cloud/).
 
-he also includes details on how to run all spiders in a single command and how to configure your spider to run at a custom interval (scheduler only provides interval options for every 10 min/hour/day)
+He also includes details on how to run all spiders in a single command and how to configure your spider to run at a custom interval (scheduler only provides interval options for every 10 min/hour/day)
 
 To make sure your spider ran ok, check the logs produced by the last run of your spider: `heroku logs --tail --ps scheduler`
+
+# How to Add ScrapeOps for monitoring
+
+Checking the logs of your Heroku app is not a robust monitoring solution :)
+
+ScrapeOps has a Scrapy sdk which make it super easy to add ScrapeOps to your project. It will only take a couple min to add the sdk and then you get a beautiful dashboard like this:
+
+[Follow the steps add the sdk](https://scrapeops.io/docs/Python%20Scrapy/sdk-integration/), then make sure to push the new version of your spider to Heroku
+
 
 
