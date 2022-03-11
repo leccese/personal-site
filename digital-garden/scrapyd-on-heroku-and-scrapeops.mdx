@@ -8,9 +8,9 @@ import { Link } from "gatsby";
 
 Using Scrapyd on Heroku and ScrapeOps is my default choice for hosting Scrapy projects. 
 
-If you're looking for the dead simplest way to host and schedule a Scrapy project for free, see my post: <Link to="/digital-garden/scrapy-heroku-scheduler">Heroku Scheduler: The Easiest Way to Host a Scrapy Poject for Free</Link>
+If you're looking for the dead simplest way to host and schedule a Scrapy project for free, see my post: <Link to="/digital-garden/scrapy-heroku-scheduler">Heroku Scheduler: The Easiest Way to Host a Scrapy Project for Free</Link>
 
-To learn more about other options, see my post: <Link to="/digital-garden/free-scrapy-deployment-options">A Comparision of Free Options for Deploying Scrapy Projects</Link>
+To learn more about other options, see my post: <Link to="/digital-garden/free-scrapy-deployment-options">A Comparison of Free Options for Deploying Scrapy Projects</Link>
 
 ---
 
@@ -22,7 +22,7 @@ Before diving into the tutorial, here's a conceptual overview of the technologie
 
 ## Scrapyd Dashboards
 
-The most popular open source dashboard is [ScrapydWeb](https://github.com/my8100/scrapydweb), but I recommend using a new service called [ScrapeOps](https://scrapeops.io/). It has a more robust feature set, nicer UI, super easy setup, and a free unlimited community plan. See [this guide for an in-depth comparision of Scrapyd dashboards](https://scrapeops.io/python-scrapy-playbook/best-scrapyd-dashboards-ui/), which I think is a fair comparison even though it is written by ScrapeOps.
+The most popular open source dashboard is [ScrapydWeb](https://github.com/my8100/scrapydweb), but I recommend using a new service called [ScrapeOps](https://scrapeops.io/). It has a more robust feature set, nicer UI, super easy setup, and a free unlimited community plan. See [this guide for an in-depth comparison of Scrapyd dashboards](https://scrapeops.io/python-scrapy-playbook/best-scrapyd-dashboards-ui/), which I think is a fair comparison even though it is written by ScrapeOps.
 
 If you do want to stay completely open source, you can [follow this tutorial to run both Scrapyd and ScrapydWeb on Heroku](https://towardsdatascience.com/a-minimalist-end-to-end-scrapy-tutorial-part-iv-3290d76a2aef)
 
@@ -95,17 +95,17 @@ The Scrapyd server will be in it's own repo with a `requirements.txt` which only
 
 You could colocate your Scrapy project and your Scrapyd server so they would share a single `requirements.txt` and `scrapy.cfg`. 
 
-In this case, the `requirements.txt` would contain the depedencies for both Scrapyd and the Scrapy project, so you won't need to use the `--include-deps` flag when deploying the project.
+In this case, the `requirements.txt` would contain the dependencies for both Scrapyd and the Scrapy project, so you won't need to use the `--include-deps` flag when deploying the project.
  
-I don't really recommend this because combining config files makes things more confusing with little benefit. (The `--inlcude-deps` flag is new so this option made more sense previously before it was possible to manage the dependencies separately.)  Having your Scrapy project in the same directory as your Scrapyd server doesn't magically associate your Scrapy project with your Scrapyd server - you still need to deploy your Scrapy project to Scrapy (Step 3 below).
+I don't really recommend this because combining config files makes things more confusing with little benefit. (The `--include-deps` flag is new so this option made more sense previously before it was possible to manage the dependencies separately.)  Having your Scrapy project in the same directory as your Scrapyd server doesn't magically associate your Scrapy project with your Scrapyd server - you still need to deploy your Scrapy project to Scrapy (Step 3 below).
 
 ## 2. Deploy Scrapyd to Heroku
 
-[There are many different ways to deploy to Heroku.](https://devcenter.heroku.com/categories/deployment). In this tutorial, I will walk through the process of [deploying to Heroku with git](https://devcenter.heroku.com/categories/deployment). This involves creating a new remote git repo on Heroku, then pushing to that remote repo to deploy a new version of our code. Another popular way to deploy to Heroku is through their [GitHub Integration](https://devcenter.heroku.com/categories/deployment), which may be prefered if you already use GitHub and don't want two remote git repos.
+[There are many different ways to deploy to Heroku.](https://devcenter.heroku.com/categories/deployment). In this tutorial, I will walk through the process of [deploying to Heroku with git](https://devcenter.heroku.com/categories/deployment). This involves creating a new remote git repo on Heroku, then pushing to that remote repo to deploy a new version of our code. Another popular way to deploy to Heroku is through their [GitHub Integration](https://devcenter.heroku.com/categories/deployment), which may be preferred if you already use GitHub and don't want two remote git repos.
 
-Here are some prerequiste steps (if you haven't done them already):
+Here are some prerequisite steps (if you haven't done them already):
 
-1. [Create a Heroku acccount](https://signup.heroku.com/)
+1. [Create a Heroku account](https://signup.heroku.com/)
 2. [Install the Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)
 3. [Initialize your Scrapyd repo as a git repository and make an initial commit](https://devcenter.heroku.com/articles/git#prerequisites-install-git-and-the-heroku-cli)
 
@@ -128,7 +128,7 @@ After running the last command, Heroku will output the status of the build. If i
 
 ## 3. Configure Scrapy project to run on Scrapyd
 
-For the Scrapy project to run correctly on Scrapyd, it needs to have all its depedencies available on Scrapyd. 
+For the Scrapy project to run correctly on Scrapyd, it needs to have all its dependencies available on Scrapyd. 
 
 If the Scrapy project has any dependencies that aren't already available on our Scrapyd server - that is, they aren't already defined in our Scrapyd `requirements.txt` - then we need to define them in a `requirements.txt` at the root of our Scrapy project and then deploy the Scrapy project (Step 4 below) with `--include-deps` flag.
 
@@ -137,7 +137,7 @@ For example, if my Scrapyd server had the `requirements.txt` shown in Step 1 and
 pymongo
 ```
 
-You should handcraft a requiremnts.txt with your project's direct dependencies, instead of using `pip freeze > requirements.txt` [because pip freeze will pollute your `requirements.txt` with indirect dependencies which likely become deprecated and cause build problems for you in the future](https://medium.com/@tomagee/pip-freeze-requirements-txt-considered-harmful-f0bce66cf895).
+You should handcraft a requirements.txt with your project's direct dependencies, instead of using `pip freeze > requirements.txt` [because pip freeze will pollute your `requirements.txt` with indirect dependencies which likely become deprecated and cause build problems for you in the future](https://medium.com/@tomagee/pip-freeze-requirements-txt-considered-harmful-f0bce66cf895).
 
 ## 4. Deploy Scrapy project to Scrapyd
 
@@ -177,7 +177,7 @@ pip install git+https://github.com/scrapy/scrapyd-client.git
 ```
 scrapyd-deploy --include-deps
 ```
-If the deployment was successful, you should see a success server reponse in the terminal output. You can also verify that your project is deployed to Scrapyd by running `scrapyd-client projects`.
+If the deployment was successful, you should see a success server response in the terminal output. You can also verify that your project is deployed to Scrapyd by running `scrapyd-client projects`.
 
 ## 5. Schedule and monitor jobs with ScrapeOps
 

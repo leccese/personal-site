@@ -1,5 +1,5 @@
 ---
-title: "A Comparision of Free Options for Deploying Scrapy Projects"
+title: "A Comparison of Free Options for Deploying Scrapy Projects"
 subtitle: ""
 date: "2022-03-03"
 image:
@@ -18,7 +18,7 @@ They describe themselves as "Heroku for web data extraction," but I think Heroku
 
 [Scrapyd](https://scrapyd.readthedocs.io/en/stable/) is an open source application to run Scrapy spiders and it can easily be hosted on Heroku. You can't do anything from its user interface, so to manage your spiders from a dashboard you'll need a separate dashboard app which will hit Scrapyd's API endpoints. 
 
-The most popular open source dashboard is [ScrapydWeb](https://github.com/my8100/scrapydweb), but I recommend using a new service called [ScrapeOps](https://scrapeops.io/). ScrapeOps has a more robust feature set, nicer UI, super easy setup, and a free unlimited community plan. See [this guide for an in-depth comparision of Scrapyd dashboards](https://scrapeops.io/python-scrapy-playbook/best-scrapyd-dashboards-ui/), which I think is a fair comparison even though it is written by ScrapeOps.
+The most popular open source dashboard is [ScrapydWeb](https://github.com/my8100/scrapydweb), but I recommend using a new service called [ScrapeOps](https://scrapeops.io/). ScrapeOps has a more robust feature set, nicer UI, super easy setup, and a free unlimited community plan. See [this guide for an in-depth comparison of Scrapyd dashboards](https://scrapeops.io/python-scrapy-playbook/best-scrapyd-dashboards-ui/), which I think is a fair comparison even though it is written by ScrapeOps.
 
 For more details on using Scrapyd on Heroku + ScrapeOps, see my post <Link to="/digital-garden/scrapyd-on-heroku-and-scrapeops">Hosting Scrapy Projects Using Scrapyd Server on Heroku and ScrapeOps</Link>
 
@@ -28,7 +28,7 @@ Another way to run and schedule Scrapy spiders is Heroku Scheduler. This option 
 
 Heroku Scheduler does not provide any monitoring itself (the best you can do is look at the logs) so I recommend adding ScrapeOps to your spider for monitoring. 
 
-For more details on using Heroku Scheduler + ScrapeOps, see my post <Link to="/digital-garden/scrapy-heroku-scheduler">Heroku Scheduler: The Easiest Way to Host a Scrapy Poject for Free</Link>
+For more details on using Heroku Scheduler + ScrapeOps, see my post <Link to="/digital-garden/scrapy-heroku-scheduler">Heroku Scheduler: The Easiest Way to Host a Scrapy Project for Free</Link>
 
 ## Recommendation
 
@@ -46,6 +46,6 @@ Monitoring interface| nice dashboard built-in to Scrapy Cloud    | nice ScrapeOp
 Free Tier           | 1hr crawl time and 1 concurrent crawl | 1000 free dyno hours / month   | 1000 free dyno hours / month |
 Cost Past Free Tier | $9/1 GB of RAM and 1 concurrent crawl | "hobby" tier is $7/month/dyno  | "hobby" tier is $7/month/dyno |
 Pricing Details     | https://www.zyte.com/scrapy-cloud/    | https://www.heroku.com/pricing | https://www.heroku.com/pricing |
-Reliablility        | production ready                      | production ready               | not production ready |
+Reliability        | production ready                      | production ready               | not production ready |
 </div> 
 
