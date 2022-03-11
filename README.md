@@ -1,1 +1,1 @@
-this is code for my personal website: [isabel.tech](isabel.tech)
+this is code for my personal website: [isabel.tech](https://isabel.tech/)
