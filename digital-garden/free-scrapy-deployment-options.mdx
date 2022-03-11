@@ -12,19 +12,21 @@ Once you want to move beyond running your Scrapy project on your local machine, 
 
 [Zyte Scrapy Cloud](https://www.zyte.com/scrapy-cloud/) is the "all batteries included" hosted service. Unsurprisingly, their free tier is very limited.
 
-They describe themselves as "Heroku for web data extraction" but unsurprisingly, I think Heroku does a better job at being Heroku ;). For very little setup costs and with a much more generous free tier, you can use Heroku and ScrapeOps to achieve a comparable setup to Scrapy Cloud. [Their comparison of Scrapy cloud vs Scrapyd on Heroku](https://support.zyte.com/support/solutions/articles/22000216178-scrapy-cloud-vs-scrapyd-using-heroku-) is quite unfair, because it doesn't consider that you can use a separate dashboard app like ScrapeOps or ScrapydWeb.
+They describe themselves as "Heroku for web data extraction," but I think Heroku does a better job at being Heroku ;). For very little setup costs and with a much more generous free tier, you can use Heroku and ScrapeOps to achieve a comparable setup to Scrapy Cloud. [Zyte's comparison of Scrapy cloud vs Scrapyd on Heroku](https://support.zyte.com/support/solutions/articles/22000216178-scrapy-cloud-vs-scrapyd-using-heroku-) is quite unfair, because it doesn't consider that you can use a separate dashboard app like ScrapeOps or ScrapydWeb to manage Scrapyd.
 
 ## Scrapyd on Heroku + ScrapeOps
 
-[Scrapyd](https://scrapyd.readthedocs.io/en/stable/) is an open source application to run Scrapy spiders which can be easily hosted on Heroku. You can't do anything from its user interface, so to manage your spiders from a dashboard you'll need a separate dashboard app which will hit Scrapyd's API endpoints. 
+[Scrapyd](https://scrapyd.readthedocs.io/en/stable/) is an open source application to run Scrapy spiders and it can easily be hosted on Heroku. You can't do anything from its user interface, so to manage your spiders from a dashboard you'll need a separate dashboard app which will hit Scrapyd's API endpoints. 
 
-The most popular open source dashboard is [ScrapydWeb](https://github.com/my8100/scrapydweb), but I recommend using a new service called [ScrapeOps](https://scrapeops.io/). It has a more robust feature set, nicer UI, super easy setup, and a free unlimited community plan. See [this guide for an in-depth comparision of Scrapyd dashboards](https://scrapeops.io/python-scrapy-playbook/best-scrapyd-dashboards-ui/), which I think is a fair comparison even though it was written by ScrapeOps.
+The most popular open source dashboard is [ScrapydWeb](https://github.com/my8100/scrapydweb), but I recommend using a new service called [ScrapeOps](https://scrapeops.io/). ScrapeOps has a more robust feature set, nicer UI, super easy setup, and a free unlimited community plan. See [this guide for an in-depth comparision of Scrapyd dashboards](https://scrapeops.io/python-scrapy-playbook/best-scrapyd-dashboards-ui/), which I think is a fair comparison even though it is written by ScrapeOps.
 
 For more details on using Scrapyd on Heroku + ScrapeOps, see my post <Link to="/digital-garden/scrapyd-on-heroku-and-scrapeops">Hosting Scrapy Projects Using Scrapyd Server on Heroku and ScrapeOps</Link>
 
 ## Heroku Scheduler + ScrapeOps
 
-Another way to run and schedule Scrapy spiders is Heroku Scheduler. This option is the absolute simplest way, so I'd recommend it to anyone who wants to get something running quickly or is new to this kind of thing. Heroku Scheduler does not provide any monitoring itself (the best you can do is look at the logs) so I recommend adding ScrapeOps to your spider for monitoring. 
+Another way to run and schedule Scrapy spiders is Heroku Scheduler. This option is the absolute simplest way, so I'd recommend it to anyone who wants to get something running quickly or is new to this kind of thing. 
+
+Heroku Scheduler does not provide any monitoring itself (the best you can do is look at the logs) so I recommend adding ScrapeOps to your spider for monitoring. 
 
 For more details on using Heroku Scheduler + ScrapeOps, see my post <Link to="/digital-garden/scrapy-heroku-scheduler">Heroku Scheduler: The Easiest Way to Host a Scrapy Poject for Free</Link>
 
