@@ -170,7 +170,7 @@ url = https://scrapyd-server-name.herokuapp.com/
 - note: as of 3/10/2022 the latest published version of `scrapyd-client` is `1.2.0`. This version does not include the feature to include dependencies (via the `--include-deps` flag) which has been merged to the [master branch on github](https://github.com/scrapy/scrapyd-client). In order to use the new feature, we will `pip install` from github, which will give us what's currently on the master branch, rather than the latest published version 
 ```
 pip install git+https://github.com/scrapy/scrapyd-client.git
-```I 
+```
 2. Deploy with command `scrapyd-deploy`
 - Remember, this will eggify your Scrapy project and deploy it to the url specified in your ``scrapy.cfg``
 - If your Scrapyd server already has all the dependencies of your Scrapy project, then you can omit the `--include-deps` flag
